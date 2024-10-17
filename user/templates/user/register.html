@@ -9,7 +9,7 @@
                 </div>
             {% endfor %}
         {% endif %}
-        <form method = "POST">
+        <form action="{% url 'register' %}" method = "POST">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottm mb-4">Register Now</legend>
