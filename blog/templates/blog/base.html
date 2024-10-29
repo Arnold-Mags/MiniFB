@@ -26,8 +26,16 @@
       </ul>
 
       <div class="col-md-3 text-end">
-        <a type="button" class="btn btn-outline-primary me-2">Login</a>
-        <a type="button" class="btn btn-primary" href="{% url 'register' %}">Sign-up</a>
+        {% if user.is_authenticated %}
+          <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary me-2">Logout</button>     
+          </form>
+          <a class="btn btn-outline-primary me-2" href="{% url 'profile' %}">Profile</a>
+        {% else %}
+          <a type="button" class="btn btn-outline-primary me-2" href="{% url 'login' %}">Login</a>
+          <a type="button" class="btn btn-primary" href="{% url 'register' %}">Sign-up</a>
+        {% endif %}
       </div>
     </header>
   </div>
